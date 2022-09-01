@@ -22,7 +22,8 @@ public class Problem implements Serializable {
     private Integer problemNo;
     private String title;
     private String description;
-    private Double acceptance;
+    private Integer submission;
+    private Integer accepted;
     private String difficulty;
     private Integer frequency;
     private Integer likesCount;
@@ -42,6 +43,10 @@ public class Problem implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problems")
     @ToString.Exclude
     private List<Topic> topics;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
+    @ToString.Exclude
+    private List<Hint> hints;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
     @ToString.Exclude
