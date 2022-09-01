@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "solution_code")
-public class SolutionCode {
+public class SolutionCode implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
