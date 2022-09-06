@@ -34,6 +34,7 @@ public class Problem implements Serializable {
     private List<Example> examples;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "problem")
+    @ToString.Exclude
     private List<Constraint> constraintData;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")

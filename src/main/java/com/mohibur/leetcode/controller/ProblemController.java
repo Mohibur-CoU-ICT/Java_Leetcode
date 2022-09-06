@@ -4,12 +4,11 @@ import com.mohibur.leetcode.entity.Problem;
 import com.mohibur.leetcode.serviceImpl.ProblemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/problem")
 public class ProblemController {
     @Autowired

@@ -30,14 +30,14 @@ public class DiscussServiceImpl implements DiscussService {
 
     @Override
     public ResponseEntity<Discuss> getDiscussById(Long id) {
-        Optional<Discuss> optionalDiscuss = discussRepository.findById(id);
-        Discuss discuss = null;
-        if (optionalDiscuss.isPresent()) {
-            discuss = optionalDiscuss.get();
-        }
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(discuss, httpHeaders, HttpStatus.OK);
+        Optional<Discuss> optionalDiscuss = discussRepository.findById(id);
+        if (optionalDiscuss.isPresent()) {
+            Discuss discuss = optionalDiscuss.get();
+            return new ResponseEntity<>(discuss, httpHeaders, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, httpHeaders, HttpStatus.NOT_FOUND);
     }
 
     @Override
@@ -53,9 +53,8 @@ public class DiscussServiceImpl implements DiscussService {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         Optional<Discuss> optionalDiscuss = discussRepository.findById(discuss.getId());
-        Discuss discuss1 = null;
         if (optionalDiscuss.isPresent()) {
-            discuss1 = optionalDiscuss.get();
+            Discuss discuss1 = optionalDiscuss.get();
             BeanUtils.copyProperties(discuss, discuss1);
             discussRepository.save(discuss1);
             return new ResponseEntity<>(discuss1, httpHeaders, HttpStatus.OK);

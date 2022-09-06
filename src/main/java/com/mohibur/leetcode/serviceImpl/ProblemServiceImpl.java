@@ -30,14 +30,14 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public ResponseEntity<Problem> getProblemById(Long id) {
-        Optional<Problem> problem1 = problemRepository.findById(id);
-        Problem problem2 = null;
-        if (problem1.isPresent()) {
-            problem2 = problem1.get();
-        }
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(problem2, httpHeaders, HttpStatus.OK);
+        Optional<Problem> optionalProblem = problemRepository.findById(id);
+        if (optionalProblem.isPresent()) {
+            Problem problem2 = optionalProblem.get();
+            return new ResponseEntity<>(problem2, httpHeaders, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, httpHeaders, HttpStatus.NOT_FOUND);
     }
 
     @Override
@@ -52,13 +52,12 @@ public class ProblemServiceImpl implements ProblemService {
     public ResponseEntity<Problem> updateProblem(Problem problem) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        Optional<Problem> problem1 = problemRepository.findById(problem.getId());
-        Problem problem2 = null;
-        if (problem1.isPresent()) {
-            problem2 = problem1.get();
-            BeanUtils.copyProperties(problem, problem2);
-            problemRepository.save(problem2);
-            return new ResponseEntity<>(problem2, httpHeaders, HttpStatus.OK);
+        Optional<Problem> optionalProblem = problemRepository.findById(problem.getId());
+        if (optionalProblem.isPresent()) {
+            Problem problem1 = optionalProblem.get();
+            BeanUtils.copyProperties(problem, problem1);
+            problemRepository.save(problem1);
+            return new ResponseEntity<>(problem1, httpHeaders, HttpStatus.OK);
         }
         return new ResponseEntity<>(null, httpHeaders, HttpStatus.NOT_FOUND);
     }
