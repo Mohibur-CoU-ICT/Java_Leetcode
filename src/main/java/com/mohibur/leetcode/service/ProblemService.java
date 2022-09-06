@@ -11,5 +11,5 @@ public interface ProblemService {
     ResponseEntity<Problem> getProblemById(Long id);
     ResponseEntity<List<Problem>> getAllProblems();
     ResponseEntity<Problem> updateProblem(Problem problem);
-    ResponseEntity deleteProblem(Long id);
+    ResponseEntity<?> deleteProblem(Long id);
 }
