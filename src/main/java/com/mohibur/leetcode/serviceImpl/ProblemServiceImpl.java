@@ -70,7 +70,7 @@ public class ProblemServiceImpl implements ProblemService {
         try {
             problemRepository.deleteById(id);
         } catch (Exception e) {
-            return new ResponseEntity<>("No problem found with id " + id, new HttpHeaders(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("No problem found with id " + id, httpHeaders, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>("Problem deleted successfully.", httpHeaders, HttpStatus.OK);
     }
