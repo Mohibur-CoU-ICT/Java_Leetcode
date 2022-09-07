@@ -8,8 +8,12 @@ import java.util.List;
 
 public interface CommentService {
     ResponseEntity<Comment> createComment(Comment comment);
+
     ResponseEntity<Comment> getCommentById(Long id);
+
     ResponseEntity<List<Comment>> getAllComments();
+
     ResponseEntity<Comment> updateComment(Comment comment);
+
     ResponseEntity<?> deleteComment(Long id);
 }
