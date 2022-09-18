@@ -1,6 +1,10 @@
 package com.mohibur.leetcode.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -20,9 +24,10 @@ public class Problem implements Serializable {
     private Long id;
 
     private Integer problemNo;
+    @Column(unique = true)
     private String title;
     private String description;
-    private Integer submission;
+    private Integer submissionsCount;
     private Integer accepted;
     private String difficulty;
     private Integer frequency;
@@ -31,31 +36,38 @@ public class Problem implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
     @ToString.Exclude
-    private List<Example> examples;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "problem")
-    @ToString.Exclude
-    private List<Constraint> constraintData;
+    @JsonIgnoreProperties("problem")
+    private List<Example> exampleList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
     @ToString.Exclude
-    private List<Submission> submissions;
+    @JsonIgnoreProperties("problem")
+    private List<Constraint> constraintList;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
+    @ToString.Exclude
+    @JsonIgnoreProperties("problem")
+    private List<Submission> submissionList;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problems")
     @ToString.Exclude
-    private List<Topic> topics;
+    @JsonIgnoreProperties("problem")
+    private List<Topic> topicList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
     @ToString.Exclude
-    private List<Hint> hints;
+    @JsonIgnoreProperties("problem")
+    private List<Hint> hintList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
     @ToString.Exclude
-    private List<Solution> solutions;
+    @JsonIgnoreProperties("problem")
+    private List<Solution> solutionList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
     @ToString.Exclude
-    private List<Discuss> discusses;
+    @JsonIgnoreProperties("problem")
+    private List<Discuss> discussList;
 
     @Override
     public boolean equals(Object o) {
