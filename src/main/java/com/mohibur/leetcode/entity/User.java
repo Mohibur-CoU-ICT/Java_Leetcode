@@ -16,9 +16,6 @@ import java.util.Objects;
 @Table(name = "user")
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private String username;
     private String password;
     private String email;
@@ -34,7 +31,7 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         User user = (User) o;
-        return id != null && Objects.equals(id, user.id);
+        return username != null && Objects.equals(username, user.username);
     }
 
     @Override
