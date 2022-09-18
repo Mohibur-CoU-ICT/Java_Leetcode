@@ -1,5 +1,6 @@
 package com.mohibur.leetcode.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class Hint implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "problem_id")
+    @JsonIgnoreProperties({"problemNo", "title", "description", "submissionsCount", "accepted", "difficulty", "frequency", "likesCount", "dislikesCount", "exampleList", "constraintList", "submissionList", "topicList", "hintList", "solutionList", "discussList"})
     private Problem problem;
 
     @Override

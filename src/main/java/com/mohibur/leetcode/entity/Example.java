@@ -1,10 +1,12 @@
 package com.mohibur.leetcode.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 @Getter
@@ -24,6 +26,7 @@ public class Example implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "problem_id")
+    @JsonIgnoreProperties({"problemNo", "title", "description", "submissionsCount", "accepted", "difficulty", "frequency", "likesCount", "dislikesCount", "exampleList", "constraintList", "submissionList", "topicList", "hintList", "solutionList", "discussList"})
     private Problem problem;
 
     @Override

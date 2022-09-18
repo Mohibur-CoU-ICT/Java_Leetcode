@@ -1,6 +1,10 @@
 package com.mohibur.leetcode.entity;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -25,6 +29,7 @@ public class Discuss implements Serializable {
     private User discussedBy;
 
     private String discussTitle;
+    @Column(name = "discuss_description", length = 10000)
     private String discussDescription;
     private Calendar discussAt;
     private Integer views;
@@ -33,14 +38,16 @@ public class Discuss implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "discuss")
     @ToString.Exclude
-    private List<Comment> comments;
+    private List<Comment> commentList;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "discusses")
     @ToString.Exclude
-    private List<Tag> tags;
+    @JsonIgnoreProperties({"discusses"})
+    private List<Tag> tagList;
 
     @ManyToOne
     @JoinColumn(name = "problem_id")
+    @JsonIgnoreProperties({"problemNo", "title", "description", "submissionsCount", "accepted", "difficulty", "frequency", "likesCount", "dislikesCount", "exampleList", "constraintList", "submissionList", "topicList", "hintList", "solutionList", "discussList"})
     private Problem problem;
 
     @Override

@@ -1,5 +1,6 @@
 package com.mohibur.leetcode.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mohibur.leetcode.enums.SubmissionStatus;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -37,6 +38,7 @@ public class Submission implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "problem_id")
+    @JsonIgnoreProperties({"problemNo", "title", "description", "submissionsCount", "accepted", "difficulty", "frequency", "likesCount", "dislikesCount", "exampleList", "constraintList", "submissionList", "topicList", "hintList", "solutionList", "discussList"})
     private Problem problem;
 
     @Override
