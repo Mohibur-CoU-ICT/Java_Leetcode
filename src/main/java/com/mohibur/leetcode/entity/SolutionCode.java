@@ -1,5 +1,6 @@
 package com.mohibur.leetcode.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mohibur.leetcode.enums.SolutionLanguage;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -27,6 +28,7 @@ public class SolutionCode implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "solution_id")
+    @JsonIgnoreProperties({"problem", "solutionCodes"})
     private Solution solution;
 
     @Override
