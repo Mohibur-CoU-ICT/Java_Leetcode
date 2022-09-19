@@ -21,7 +21,7 @@ public class Role implements Serializable {
 
     private String roleName;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roles")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roleList")
     @ToString.Exclude
     private List<User> userList;
 

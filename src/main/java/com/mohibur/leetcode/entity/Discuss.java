@@ -40,9 +40,9 @@ public class Discuss implements Serializable {
     @ToString.Exclude
     private List<Comment> commentList;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "discusses")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "discussList")
     @ToString.Exclude
-    @JsonIgnoreProperties({"discusses"})
+    @JsonIgnoreProperties({"discussList"})
     private List<Tag> tagList;
 
     @ManyToOne

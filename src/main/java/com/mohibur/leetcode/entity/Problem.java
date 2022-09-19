@@ -49,7 +49,7 @@ public class Problem implements Serializable {
     @JsonIgnoreProperties("problem")
     private List<Submission> submissionList;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problems")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problemList")
     @ToString.Exclude
     @JsonIgnoreProperties("problem")
     private List<Topic> topicList;
