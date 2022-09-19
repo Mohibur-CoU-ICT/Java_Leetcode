@@ -29,6 +29,11 @@ public class TopicController {
         return topicService.getAllTopics();
     }
 
+    @GetMapping("/getTopicWiseProblemCount")
+    public ResponseEntity<List<Object[]>> getTopicWiseProblemCount() {
+        return topicService.getTopicWiseProblemCount();
+    }
+
     @PutMapping
     public ResponseEntity<Topic> updateTopic(@RequestBody Topic topic) {
         return topicService.updateTopic(topic);

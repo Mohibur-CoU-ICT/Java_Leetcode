@@ -1,5 +1,6 @@
 package com.mohibur.leetcode.serviceImpl;
 
+import com.mohibur.leetcode.entity.Problem;
 import com.mohibur.leetcode.entity.Topic;
 import com.mohibur.leetcode.repository.TopicRepository;
 import com.mohibur.leetcode.service.TopicService;
@@ -46,6 +47,14 @@ public class TopicServiceImpl implements TopicService {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(topics, httpHeaders, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<List<Object[]>> getTopicWiseProblemCount() {
+        List<Object[]> ans = topicRepository.getTopicWiseProblemCount();
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity<>(ans, httpHeaders, HttpStatus.OK);
     }
 
     @Override

@@ -13,6 +13,8 @@ public interface TopicService {
 
     ResponseEntity<List<Topic>> getAllTopics();
 
+    ResponseEntity<List<Object[]>> getTopicWiseProblemCount();
+
     ResponseEntity<Topic> updateTopic(Topic topic);
 
     ResponseEntity<?> deleteTopic(Long id);
