@@ -27,7 +27,7 @@ public class Tag implements Serializable {
     @JoinTable(name = "tag_discuss", joinColumns = @JoinColumn(name = "tag_id"), inverseJoinColumns = @JoinColumn(name = "discuss_id"))
     @ToString.Exclude
     @JsonIgnoreProperties({"commentList", "tagList", "problem"})
-    private List<Discuss> discusses;
+    private List<Discuss> discussList;
 
     @Override
     public boolean equals(Object o) {

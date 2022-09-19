@@ -28,7 +28,7 @@ public class Solution implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "solution")
     @ToString.Exclude
     @JsonIgnoreProperties({"solution"})
-    private List<SolutionCode> solutionCodes;
+    private List<SolutionCode> solutionCodeList;
 
     @Override
     public boolean equals(Object o) {

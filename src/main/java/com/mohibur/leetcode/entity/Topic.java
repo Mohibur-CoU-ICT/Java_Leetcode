@@ -19,10 +19,13 @@ public class Topic implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(unique = true)
+    private String name;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "topic_problem", joinColumns = @JoinColumn(name = "topic_id"), inverseJoinColumns = @JoinColumn(name = "problem_id"))
     @ToString.Exclude
-    private List<Problem> problems;
+    private List<Problem> problemList;
 
     @Override
     public boolean equals(Object o) {

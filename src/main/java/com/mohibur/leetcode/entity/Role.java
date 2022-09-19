@@ -23,7 +23,7 @@ public class Role implements Serializable {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roles")
     @ToString.Exclude
-    private List<User> users;
+    private List<User> userList;
 
     @Override
     public boolean equals(Object o) {
