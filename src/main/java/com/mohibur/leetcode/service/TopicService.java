@@ -1,5 +1,6 @@
 package com.mohibur.leetcode.service;
 
+import com.mohibur.leetcode.dto.TopicWiseProblemCount;
 import com.mohibur.leetcode.entity.Topic;
 import org.springframework.http.ResponseEntity;
 
@@ -13,7 +14,7 @@ public interface TopicService {
 
     ResponseEntity<List<Topic>> getAllTopics();
 
-    ResponseEntity<List<Object[]>> getTopicWiseProblemCount();
+    ResponseEntity<List<TopicWiseProblemCount>> getTopicWiseProblemCount();
 
     ResponseEntity<Topic> updateTopic(Topic topic);
 
