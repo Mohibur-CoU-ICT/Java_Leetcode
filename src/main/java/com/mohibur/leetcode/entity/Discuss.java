@@ -8,8 +8,6 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +17,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "discuss")
-public class Discuss implements Serializable {
+public class Discuss extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,10 +26,10 @@ public class Discuss implements Serializable {
     @JoinColumn(name = "discussed_by_id")
     private User discussedBy;
 
-    private String discussTitle;
-    @Column(name = "discuss_description", length = 10000)
-    private String discussDescription;
-    private Calendar discussAt;
+    @Column(name = "text", length = 10000)
+    private String text;
+
+    private String title;
     private Integer views;
     private Integer upvote;
     private Integer downvote;
@@ -41,8 +39,8 @@ public class Discuss implements Serializable {
     private List<Comment> commentList;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "discussList")
-    @ToString.Exclude
     @JsonIgnoreProperties({"discussList"})
+    @ToString.Exclude
     private List<Tag> tagList;
 
     @ManyToOne

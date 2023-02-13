@@ -8,7 +8,6 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -16,13 +15,13 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-@Table(name = "constraint_data")
-public class Constraint implements Serializable {
+@Table(name = "constraints")
+public class Constraint extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String constraintString;
+    private String text;
 
     @ManyToOne
     @JoinColumn(name = "problem_id")

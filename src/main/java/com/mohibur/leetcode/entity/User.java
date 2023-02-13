@@ -1,10 +1,12 @@
 package com.mohibur.leetcode.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +16,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User extends BaseModel {
     @Id
     private String username;
     private String password;

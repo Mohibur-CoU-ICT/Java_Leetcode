@@ -1,10 +1,12 @@
 package com.mohibur.leetcode.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,12 +16,12 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "role")
-public class Role implements Serializable {
+public class Role extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String roleName;
+    private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roleList")
     @ToString.Exclude

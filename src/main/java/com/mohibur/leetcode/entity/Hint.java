@@ -8,7 +8,6 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -17,12 +16,12 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "hint")
-public class Hint implements Serializable {
+public class Hint extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String hint;
+    private String text;
 
     @ManyToOne
     @JoinColumn(name = "problem_id")

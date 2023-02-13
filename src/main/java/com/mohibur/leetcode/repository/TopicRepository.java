@@ -1,6 +1,6 @@
 package com.mohibur.leetcode.repository;
 
-import com.mohibur.leetcode.dto.TopicWiseProblemCount;
+import com.mohibur.leetcode.interfaces.TopicWiseProblemCount;
 import com.mohibur.leetcode.entity.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +15,5 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
             "on tp.topic_id = t.id \n" +
             "group by t.name \n" +
             "order by problemCount desc ", nativeQuery = true)
-    public List<TopicWiseProblemCount> getTopicWiseProblemCount();
+    List<TopicWiseProblemCount> getTopicWiseProblemCount();
 }

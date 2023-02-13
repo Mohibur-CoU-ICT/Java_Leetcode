@@ -1,6 +1,6 @@
 package com.mohibur.leetcode.service;
 
-import com.mohibur.leetcode.dto.TopicWiseProblemCount;
+import com.mohibur.leetcode.interfaces.TopicWiseProblemCount;
 import com.mohibur.leetcode.entity.Topic;
 import org.springframework.http.ResponseEntity;
 

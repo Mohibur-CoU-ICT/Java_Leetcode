@@ -2,11 +2,13 @@ package com.mohibur.leetcode.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mohibur.leetcode.enums.SolutionLanguage;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -15,7 +17,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "solution_code")
-public class SolutionCode implements Serializable {
+public class SolutionCode extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

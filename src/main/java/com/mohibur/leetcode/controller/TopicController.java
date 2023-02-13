@@ -1,6 +1,6 @@
 package com.mohibur.leetcode.controller;
 
-import com.mohibur.leetcode.dto.TopicWiseProblemCount;
+import com.mohibur.leetcode.interfaces.TopicWiseProblemCount;
 import com.mohibur.leetcode.entity.Topic;
 import com.mohibur.leetcode.serviceImpl.TopicServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

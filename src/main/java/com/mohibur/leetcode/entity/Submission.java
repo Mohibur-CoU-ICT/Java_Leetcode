@@ -2,12 +2,13 @@ package com.mohibur.leetcode.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mohibur.leetcode.enums.SubmissionStatus;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Objects;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "submission")
-public class Submission implements Serializable {
+public class Submission extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,7 +25,6 @@ public class Submission implements Serializable {
     @Enumerated(EnumType.STRING)
     private SubmissionStatus submissionStatus;
 
-    private Calendar submissionTime;
     private Integer runtime;
     private Integer memory;
 

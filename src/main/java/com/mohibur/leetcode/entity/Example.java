@@ -1,12 +1,13 @@
 package com.mohibur.leetcode.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Objects;
 
 @Getter
@@ -15,13 +16,15 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "example")
-public class Example implements Serializable {
+public class Example extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String input;
     private String output;
+
+    @Column(length = 1000)
     private String explanation;
 
     @ManyToOne

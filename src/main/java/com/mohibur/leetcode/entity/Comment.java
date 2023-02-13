@@ -6,12 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Objects;
 
 @Getter
@@ -20,14 +16,14 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "comment")
-public class Comment implements Serializable {
+public class Comment extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "comment_string", length = 10000)
-    private String commentString;
-    private Calendar commentAt;
+    @Column(length = 10000)
+    private String text;
+
     private Integer upvote;
     private Integer downvote;
 

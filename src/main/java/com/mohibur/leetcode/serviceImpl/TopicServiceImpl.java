@@ -1,6 +1,6 @@
 package com.mohibur.leetcode.serviceImpl;
 
-import com.mohibur.leetcode.dto.TopicWiseProblemCount;
+import com.mohibur.leetcode.interfaces.TopicWiseProblemCount;
 import com.mohibur.leetcode.entity.Topic;
 import com.mohibur.leetcode.repository.TopicRepository;
 import com.mohibur.leetcode.service.TopicService;

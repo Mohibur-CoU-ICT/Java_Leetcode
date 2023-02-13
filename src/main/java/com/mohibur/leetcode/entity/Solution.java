@@ -1,11 +1,13 @@
 package com.mohibur.leetcode.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +17,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "solution")
-public class Solution implements Serializable {
+public class Solution extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -26,8 +28,8 @@ public class Solution implements Serializable {
     private Problem problem;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "solution")
-    @ToString.Exclude
     @JsonIgnoreProperties({"solution"})
+    @ToString.Exclude
     private List<SolutionCode> solutionCodeList;
 
     @Override

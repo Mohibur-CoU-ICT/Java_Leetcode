@@ -1,4 +1,4 @@
-package com.mohibur.leetcode.dto;
+package com.mohibur.leetcode.interfaces;
 
 public interface TopicWiseProblemCount {
     Integer getId();

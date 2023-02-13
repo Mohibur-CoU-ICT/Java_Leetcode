@@ -8,7 +8,6 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,55 +17,58 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "problem")
-public class Problem implements Serializable {
+public class Problem extends BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Integer problemNo;
     @Column(unique = true)
     private String title;
+
+    @Column(length = 10000)
     private String description;
+
+    private Integer problemNo;
     private Integer submissionsCount;
-    private Integer accepted;
+    private Integer acceptedCount;
     private String difficulty;
     private Integer frequency;
     private Integer likesCount;
     private Integer dislikesCount;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
-    @ToString.Exclude
     @JsonIgnoreProperties("problem")
+    @ToString.Exclude
     private List<Example> exampleList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
-    @ToString.Exclude
     @JsonIgnoreProperties("problem")
+    @ToString.Exclude
     private List<Constraint> constraintList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
-    @ToString.Exclude
     @JsonIgnoreProperties("problem")
+    @ToString.Exclude
     private List<Submission> submissionList;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "problemList")
-    @ToString.Exclude
     @JsonIgnoreProperties("problem")
+    @ToString.Exclude
     private List<Topic> topicList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
-    @ToString.Exclude
     @JsonIgnoreProperties("problem")
+    @ToString.Exclude
     private List<Hint> hintList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
-    @ToString.Exclude
     @JsonIgnoreProperties("problem")
+    @ToString.Exclude
     private List<Solution> solutionList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "problem")
-    @ToString.Exclude
     @JsonIgnoreProperties("problem")
+    @ToString.Exclude
     private List<Discuss> discussList;
 
     @Override
