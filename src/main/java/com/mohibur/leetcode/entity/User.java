@@ -20,8 +20,10 @@ public class User extends BaseModel {
     @Id
     private String username;
     private String password;
-    private String email;
     private Integer starCount;
+
+    @Column(unique = true, nullable = false)
+    private String email;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

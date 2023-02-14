@@ -21,6 +21,7 @@ public class Role extends BaseModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roleList")
@@ -38,5 +39,17 @@ public class Role extends BaseModel {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.name = "ROLE_" + this.name.toUpperCase();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        if (!this.name.toUpperCase().startsWith("ROLE_")) {
+            this.name = "ROLE_" + this.name.toUpperCase();
+        }
     }
 }
