@@ -24,6 +24,9 @@ public class Role extends BaseModel {
     @Column(unique = true, nullable = false)
     private String name;
 
+    @Transient
+    private final String rolePrefix = "ROLE_";
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roleList")
     @ToString.Exclude
     private List<User> userList;
@@ -43,13 +46,15 @@ public class Role extends BaseModel {
 
     @PrePersist
     public void prePersist() {
-        this.name = "ROLE_" + this.name.toUpperCase();
+        if (!this.name.toUpperCase().startsWith(this.rolePrefix)) {
+            this.name = this.rolePrefix + this.name.toUpperCase();
+        }
     }
 
     @PreUpdate
     public void preUpdate() {
-        if (!this.name.toUpperCase().startsWith("ROLE_")) {
-            this.name = "ROLE_" + this.name.toUpperCase();
+        if (!this.name.toUpperCase().startsWith(this.rolePrefix)) {
+            this.name = this.rolePrefix + this.name.toUpperCase();
         }
     }
 }
