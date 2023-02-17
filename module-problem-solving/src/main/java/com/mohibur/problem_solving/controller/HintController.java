@@ -1,5 +1,6 @@
 package com.mohibur.problem_solving.controller;
 
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.problem_solving.serviceImpl.HintServiceImpl;
 import com.mohibur.problem_solving.entity.Hint;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/hint")
+@RequestMapping(UrlConstant.HintUrl.ROOT)
 public class HintController {
     @Autowired
     private HintServiceImpl hintService;
@@ -19,12 +20,12 @@ public class HintController {
         return hintService.createHint(hint);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Hint> getHint(@PathVariable Long id) {
         return hintService.getHintById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Hint>> getAllHints() {
         return hintService.getAllHints();
     }
@@ -34,7 +35,7 @@ public class HintController {
         return hintService.updateHint(hint);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteHint(@PathVariable Long id) {
         return hintService.deleteHint(id);
     }

@@ -1,5 +1,6 @@
 package com.mohibur.problem_solving.controller;
 
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.problem_solving.serviceImpl.ExampleServiceImpl;
 import com.mohibur.problem_solving.entity.Example;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/example")
+@RequestMapping(UrlConstant.ExampleUrl.ROOT)
 public class ExampleController {
     @Autowired
     private ExampleServiceImpl exampleService;
@@ -19,12 +20,12 @@ public class ExampleController {
         return exampleService.createExample(example);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Example> getExample(@PathVariable Long id) {
         return exampleService.getExampleById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Example>> getAllExamples() {
         return exampleService.getAllExamples();
     }
@@ -34,7 +35,7 @@ public class ExampleController {
         return exampleService.updateExample(example);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteExample(@PathVariable Long id) {
         return exampleService.deleteExample(id);
     }

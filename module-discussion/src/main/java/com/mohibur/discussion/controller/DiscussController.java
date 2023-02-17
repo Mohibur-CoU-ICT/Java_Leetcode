@@ -1,5 +1,6 @@
 package com.mohibur.discussion.controller;
 
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.discussion.entity.Discuss;
 import com.mohibur.discussion.serviceImpl.DiscussServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/discuss")
+@RequestMapping(UrlConstant.DiscussUrl.ROOT)
 public class DiscussController {
     @Autowired
     private DiscussServiceImpl discussService;
@@ -19,12 +20,12 @@ public class DiscussController {
         return discussService.createDiscuss(discuss);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Discuss> getDiscuss(@PathVariable Long id) {
         return discussService.getDiscussById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Discuss>> getAllDiscusses() {
         return discussService.getAllDiscusses();
     }
@@ -34,7 +35,7 @@ public class DiscussController {
         return discussService.updateDiscuss(discuss);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteDiscuss(@PathVariable Long id) {
         return discussService.deleteDiscuss(id);
     }

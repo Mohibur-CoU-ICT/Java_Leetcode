@@ -1,5 +1,6 @@
 package com.mohibur.problem_solving.controller;
 
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.problem_solving.serviceImpl.ConstraintServiceImpl;
 import com.mohibur.problem_solving.entity.Constraint;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/constraint")
+@RequestMapping(UrlConstant.ConstraintUrl.ROOT)
 public class ConstraintController {
     @Autowired
     private ConstraintServiceImpl constraintService;
@@ -19,12 +20,12 @@ public class ConstraintController {
         return constraintService.createConstraint(constraint);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Constraint> getConstraint(@PathVariable Long id) {
         return constraintService.getConstraintById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Constraint>> getAllConstraints() {
         return constraintService.getAllConstraints();
     }
@@ -34,7 +35,7 @@ public class ConstraintController {
         return constraintService.updateConstraint(constraint);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteConstraint(@PathVariable Long id) {
         return constraintService.deleteConstraint(id);
     }

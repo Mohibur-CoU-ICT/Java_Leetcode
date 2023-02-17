@@ -1,5 +1,6 @@
 package com.mohibur.discussion.controller;
 
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.discussion.entity.Comment;
 import com.mohibur.discussion.serviceImpl.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comment")
+@RequestMapping(UrlConstant.CommentUrl.ROOT)
 public class CommentController {
     @Autowired
     private CommentServiceImpl commentService;
@@ -19,12 +20,12 @@ public class CommentController {
         return commentService.createComment(comment);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Comment> getComment(@PathVariable Long id) {
         return commentService.getCommentById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Comment>> getAllComments() {
         return commentService.getAllComments();
     }
@@ -34,7 +35,7 @@ public class CommentController {
         return commentService.updateComment(comment);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteComment(@PathVariable Long id) {
         return commentService.deleteComment(id);
     }

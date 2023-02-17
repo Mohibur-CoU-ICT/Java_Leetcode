@@ -1,5 +1,6 @@
 package com.mohibur.problem_solving.controller;
 
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.problem_solving.serviceImpl.SubmissionServiceImpl;
 import com.mohibur.problem_solving.entity.Submission;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/submission")
+@RequestMapping(UrlConstant.SubmissionUrl.ROOT)
 public class SubmissionController {
     @Autowired
     private SubmissionServiceImpl submissionService;
@@ -19,12 +20,12 @@ public class SubmissionController {
         return submissionService.createSubmission(submission);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Submission> getSubmission(@PathVariable Long id) {
         return submissionService.getSubmissionById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Submission>> getAllSubmissions() {
         return submissionService.getAllSubmissions();
     }
@@ -34,7 +35,7 @@ public class SubmissionController {
         return submissionService.updateSubmission(submission);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteSubmission(@PathVariable Long id) {
         return submissionService.deleteSubmission(id);
     }

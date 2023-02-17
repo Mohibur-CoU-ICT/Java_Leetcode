@@ -1,5 +1,6 @@
 package com.mohibur.problem_solving.controller;
 
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.problem_solving.serviceImpl.ProblemServiceImpl;
 import com.mohibur.problem_solving.entity.Problem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/problem")
+@RequestMapping(UrlConstant.ProblemUrl.ROOT)
 public class ProblemController {
     @Autowired
     private ProblemServiceImpl problemService;
@@ -19,12 +20,12 @@ public class ProblemController {
         return problemService.createProblem(problem);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Problem> getProblem(@PathVariable Long id) {
         return problemService.getProblemById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Problem>> getAllProblems() {
         return problemService.getAllProblems();
     }
@@ -34,7 +35,7 @@ public class ProblemController {
         return problemService.updateProblem(problem);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping
     public ResponseEntity<?> deleteProblem(@PathVariable Long id) {
         return problemService.deleteProblem(id);
     }

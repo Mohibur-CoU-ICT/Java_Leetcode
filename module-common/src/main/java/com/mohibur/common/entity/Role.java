@@ -1,6 +1,5 @@
 package com.mohibur.common.entity;
 
-import com.mohibur.leetcode.entity.BaseModel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

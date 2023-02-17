@@ -1,6 +1,7 @@
 package com.mohibur.common.controller;
 
 import com.mohibur.common.entity.User;
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.common.serviceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping(UrlConstant.UserUrl.ROOT)
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
@@ -19,12 +20,12 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<User> getUser(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -34,7 +35,7 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         return userService.deleteUser(id);
     }

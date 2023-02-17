@@ -1,6 +1,7 @@
 package com.mohibur.common.controller;
 
 import com.mohibur.common.entity.Role;
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.common.serviceImpl.RoleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/role")
+@RequestMapping(UrlConstant.RoleUrl.ROOT)
 public class RoleController {
     @Autowired
     private RoleServiceImpl roleService;
@@ -19,12 +20,12 @@ public class RoleController {
         return roleService.createRole(role);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(UrlConstant.ID)
     public ResponseEntity<Role> getRole(@PathVariable Long id) {
         return roleService.getRoleById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Role>> getAllRoles() {
         return roleService.getAllRoles();
     }
@@ -34,7 +35,7 @@ public class RoleController {
         return roleService.updateRole(role);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstant.ID)
     public ResponseEntity<?> deleteRole(@PathVariable Long id) {
         return roleService.deleteRole(id);
     }
