@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         User user1 = userRepository.save(user);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(user1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(user1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

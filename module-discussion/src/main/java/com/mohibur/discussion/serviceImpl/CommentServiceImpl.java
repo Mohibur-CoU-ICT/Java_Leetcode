@@ -25,7 +25,7 @@ public class CommentServiceImpl implements CommentService {
         Comment comment1 = commentRepository.save(comment);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(comment1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(comment1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class RoleServiceImpl implements RoleService {
         Role role1 = roleRepository.save(role);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(role1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(role1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class ConstraintServiceImpl implements ConstraintService {
         Constraint constraint1 = constraintRepository.save(constraint);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(constraint1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(constraint1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

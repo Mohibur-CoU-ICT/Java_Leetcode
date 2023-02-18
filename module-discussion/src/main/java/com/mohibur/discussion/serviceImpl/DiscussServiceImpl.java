@@ -25,7 +25,7 @@ public class DiscussServiceImpl implements DiscussService {
         Discuss discuss1 = discussRepository.save(discuss);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(discuss1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(discuss1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

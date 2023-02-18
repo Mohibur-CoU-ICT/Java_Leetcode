@@ -25,7 +25,7 @@ public class HintServiceImpl implements HintService {
         Hint hint1 = hintRepository.save(hint);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(hint1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(hint1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

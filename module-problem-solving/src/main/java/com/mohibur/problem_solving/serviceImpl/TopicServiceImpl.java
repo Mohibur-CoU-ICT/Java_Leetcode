@@ -26,7 +26,7 @@ public class TopicServiceImpl implements TopicService {
         Topic topic1 = topicRepository.save(topic);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(topic1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(topic1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

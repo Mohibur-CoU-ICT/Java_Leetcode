@@ -25,7 +25,7 @@ public class SolutionServiceImpl implements SolutionService {
         Solution solution1 = solutionRepository.save(solution);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(solution1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(solution1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class ProblemServiceImpl implements ProblemService {
         Problem problem1 = problemRepository.save(problem);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(problem1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(problem1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

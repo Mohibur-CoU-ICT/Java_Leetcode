@@ -25,7 +25,7 @@ public class ExampleServiceImpl implements ExampleService {
         Example example1 = exampleRepository.save(example);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(example1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(example1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

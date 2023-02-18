@@ -25,7 +25,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         Submission submission1 = submissionRepository.save(submission);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(submission1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(submission1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

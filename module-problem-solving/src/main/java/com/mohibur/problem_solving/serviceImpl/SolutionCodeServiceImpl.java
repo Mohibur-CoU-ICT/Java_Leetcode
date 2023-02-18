@@ -25,7 +25,7 @@ public class SolutionCodeServiceImpl implements SolutionCodeService {
         SolutionCode solutionCode1 = solutionCodeRepository.save(solutionCode);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(solutionCode1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(solutionCode1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override

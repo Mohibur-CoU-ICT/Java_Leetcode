@@ -25,7 +25,7 @@ public class TagServiceImpl implements TagService {
         Tag tag1 = tagRepository.save(tag);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(tag1, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(tag1, httpHeaders, HttpStatus.CREATED);
     }
 
     @Override
