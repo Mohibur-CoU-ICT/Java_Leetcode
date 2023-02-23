@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserService {
     ResponseEntity<User> createUser(User role);
 
+    ResponseEntity<String> registerUser(User user);
+
     ResponseEntity<User> getUserById(Long id);
 
     ResponseEntity<List<User>> getAllUsers();

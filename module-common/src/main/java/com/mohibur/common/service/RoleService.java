@@ -1,6 +1,5 @@
 package com.mohibur.common.service;
 
-import com.mohibur.leetcode.entity.Role;
 import com.mohibur.common.entity.Role;
 import org.springframework.http.ResponseEntity;
 

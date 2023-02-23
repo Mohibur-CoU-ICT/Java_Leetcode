@@ -1,19 +1,17 @@
 package com.mohibur.common.entity;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+//@Getter
+//@Setter
+//@ToString
+//@RequiredArgsConstructor
+@Data
 @Entity
 @Table(name = "user")
 public class User extends BaseModel {
@@ -21,6 +19,8 @@ public class User extends BaseModel {
     private String username;
     private String password;
     private Integer starCount;
+    private boolean verified;
+    private String verificationToken;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -30,16 +30,17 @@ public class User extends BaseModel {
     @ToString.Exclude
     private List<Role> roleList;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        User user = (User) o;
-        return username != null && Objects.equals(username, user.username);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+//        User user = (User) o;
+//        return username != null && Objects.equals(username, user.username);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return getClass().hashCode();
+//    }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

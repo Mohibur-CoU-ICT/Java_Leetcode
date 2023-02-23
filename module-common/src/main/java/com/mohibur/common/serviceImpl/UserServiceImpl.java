@@ -1,6 +1,7 @@
 package com.mohibur.common.serviceImpl;
 
 import com.mohibur.common.entity.User;
+import com.mohibur.common.interfaces.UrlConstant;
 import com.mohibur.common.repository.UserRepository;
 import com.mohibur.common.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -9,15 +10,23 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private JavaMailSender mailSender;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
 
@@ -27,6 +36,44 @@ public class UserServiceImpl implements UserService {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(user1, httpHeaders, HttpStatus.CREATED);
+    }
+
+    @Override
+    public ResponseEntity<String> registerUser(User user) {
+        // Generate a verification token
+        String token = UUID.randomUUID().toString();
+        user.setVerificationToken(token);
+        user.setVerified(false);
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        userRepository.save(user);
+
+        // Send an email with the verification link
+        String recipientAddress = user.getEmail();
+        String subject = "Email Verification";
+        String verificationUrl = "http://localhost:8080" + UrlConstant.UserUrl.VERIFY + "?token=" + token;
+        String message = "Please click the link below to verify your email address:\n" + verificationUrl;
+
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+        email.setText(message);
+        mailSender.send(email);
+
+        return new ResponseEntity<>("Please verify your email.", HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<String> verifyUser(String token) {
+        Optional<User> optionalUser = userRepository.findByVerificationToken(token);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setVerificationToken(null);
+            user.setVerified(true);
+            userRepository.save(user);
+            return new ResponseEntity<>("Email address verified", HttpStatus.OK);
+        } else {
+            throw new IllegalArgumentException("Invalid verification token");
+        }
     }
 
     @Override
