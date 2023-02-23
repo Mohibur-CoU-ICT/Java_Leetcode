@@ -1,8 +1,8 @@
-package com.mohibur.common.controller;
+package com.mohibur.security.controller;
 
-import com.mohibur.common.entity.User;
+import com.mohibur.security.entity.User;
 import com.mohibur.common.interfaces.UrlConstant;
-import com.mohibur.common.serviceImpl.UserServiceImpl;
+import com.mohibur.security.serviceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

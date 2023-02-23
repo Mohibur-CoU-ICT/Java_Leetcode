@@ -1,6 +1,6 @@
-package com.mohibur.common.repository;
+package com.mohibur.security.repository;
 
-import com.mohibur.common.entity.User;
+import com.mohibur.security.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

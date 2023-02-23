@@ -1,9 +1,9 @@
-package com.mohibur.common.serviceImpl;
+package com.mohibur.security.serviceImpl;
 
-import com.mohibur.common.entity.User;
+import com.mohibur.security.entity.User;
 import com.mohibur.common.interfaces.UrlConstant;
-import com.mohibur.common.repository.UserRepository;
-import com.mohibur.common.service.UserService;
+import com.mohibur.security.repository.UserRepository;
+import com.mohibur.security.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

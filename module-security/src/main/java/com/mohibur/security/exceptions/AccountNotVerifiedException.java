@@ -1,4 +1,4 @@
-package com.mohibur.common.exceptions;
+package com.mohibur.security.exceptions;
 
 public class AccountNotVerifiedException extends RuntimeException {
     public AccountNotVerifiedException(String message) {

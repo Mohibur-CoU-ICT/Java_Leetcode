@@ -1,4 +1,4 @@
-package com.mohibur.common.entity;
+package com.mohibur.security.entity;
 
 import lombok.Data;
 

@@ -1,9 +1,9 @@
-package com.mohibur.common.controller;
+package com.mohibur.security.controller;
 
-import com.mohibur.common.config.JwtTokenProvider;
-import com.mohibur.common.config.MyAuthenticationManager;
-import com.mohibur.common.entity.AuthRequest;
-import com.mohibur.common.entity.AuthResponse;
+import com.mohibur.security.config.JwtTokenProvider;
+import com.mohibur.security.config.MyAuthenticationManager;
+import com.mohibur.security.entity.AuthRequest;
+import com.mohibur.security.entity.AuthResponse;
 import com.mohibur.common.interfaces.UrlConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

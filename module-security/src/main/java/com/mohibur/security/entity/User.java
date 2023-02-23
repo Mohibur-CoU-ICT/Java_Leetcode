@@ -1,11 +1,10 @@
-package com.mohibur.common.entity;
+package com.mohibur.security.entity;
 
+import com.mohibur.common.entity.BaseModel;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 //@Getter
 //@Setter

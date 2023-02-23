@@ -1,8 +1,8 @@
-package com.mohibur.common.config;
+package com.mohibur.security.config;
 
-import com.mohibur.common.entity.User;
-import com.mohibur.common.exceptions.AccountNotVerifiedException;
-import com.mohibur.common.repository.UserRepository;
+import com.mohibur.security.entity.User;
+import com.mohibur.security.exceptions.AccountNotVerifiedException;
+import com.mohibur.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
