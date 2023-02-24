@@ -1,5 +1,6 @@
-package com.mohibur.common.entity;
+package com.mohibur.security.entity;
 
+import com.mohibur.common.entity.BaseModel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

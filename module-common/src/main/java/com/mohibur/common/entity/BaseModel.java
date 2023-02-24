@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -22,7 +23,10 @@ public abstract class BaseModel implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
+    private Boolean active;
+
     @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @CreatedBy

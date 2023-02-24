@@ -1,6 +1,6 @@
-package com.mohibur.common.service;
+package com.mohibur.security.service;
 
-import com.mohibur.common.entity.User;
+import com.mohibur.security.entity.User;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface UserService {
     ResponseEntity<User> createUser(User role);
+
+    ResponseEntity<String> registerUser(User user);
 
     ResponseEntity<User> getUserById(Long id);
 

@@ -1,15 +1,18 @@
 package com.mohibur.common.interfaces;
 
 public interface UrlConstant {
-    String ID = "/id";
+    String ID = "/{id}";
     String API = "/api";
     String VERSION1 = "/v1";
 
     // common module
     class UserUrl {
         public static final String USER = "/users";
-        public static final String ROOT = API + VERSION1 + USER;
-        public static final String GET = API + VERSION1 + USER + ID;
+        public static final String REGISTER = USER + "/register";
+        public static final String VERIFY = USER +  "/verify";
+        public static final String LOGIN = USER +  "/login";
+        public static final String LOGOUT = API + USER +  "/logout";
+        public static final String GET = API + USER;
     }
 
     class RoleUrl {

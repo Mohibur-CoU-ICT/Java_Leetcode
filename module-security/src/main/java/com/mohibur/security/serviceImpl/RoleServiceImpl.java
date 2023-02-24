@@ -1,8 +1,8 @@
-package com.mohibur.common.serviceImpl;
+package com.mohibur.security.serviceImpl;
 
-import com.mohibur.common.entity.Role;
-import com.mohibur.common.repository.RoleRepository;
-import com.mohibur.common.service.RoleService;
+import com.mohibur.security.entity.Role;
+import com.mohibur.security.repository.RoleRepository;
+import com.mohibur.security.service.RoleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

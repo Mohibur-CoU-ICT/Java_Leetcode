@@ -1,9 +1,7 @@
-package com.mohibur.common.entity;
+package com.mohibur.security.entity;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.mohibur.common.entity.BaseModel;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -21,6 +19,8 @@ public class User extends BaseModel {
     private String username;
     private String password;
     private Integer starCount;
+    private boolean verified;
+    private String verificationToken;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -42,4 +42,5 @@ public class User extends BaseModel {
     public int hashCode() {
         return getClass().hashCode();
     }
+
 }
