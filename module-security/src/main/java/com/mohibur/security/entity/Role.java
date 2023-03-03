@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "role")
-public class Role extends BaseModel {
+public class Role extends BaseModel implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -31,6 +32,11 @@ public class Role extends BaseModel {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "roleList")
     @ToString.Exclude
     private List<User> userList;
+
+    @Override
+    public String getAuthority() {
+        return name;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -58,4 +64,5 @@ public class Role extends BaseModel {
             this.name = this.rolePrefix + this.name.toUpperCase();
         }
     }
+
 }
