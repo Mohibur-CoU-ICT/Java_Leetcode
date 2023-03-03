@@ -77,6 +77,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+
+        if (!optionalUser.isPresent()) {
+            throw new UsernameNotFoundException(username);
+        }
+        User user = optionalUser.get();
+
+        return new User(user.getUsername(), user.getPassword(), user.getRoleList());
+    }
+
+    @Override
     public ResponseEntity<User> getUserById(Long id) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);

@@ -2,11 +2,12 @@ package com.mohibur.security.service;
 
 import com.mohibur.security.entity.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
     ResponseEntity<User> createUser(User role);
 
     ResponseEntity<String> registerUser(User user);

@@ -26,6 +26,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         User user = optionalUser.get();
 
-        return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
+        return new User(user.getUsername(), user.getPassword(), user.getRoleList());
     }
 }
