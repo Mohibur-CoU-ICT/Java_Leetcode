@@ -1,5 +1,6 @@
-package com.mohibur.security.config;
+package com.mohibur.security.serviceImpl;
 
+import com.mohibur.security.entity.User;
 import com.mohibur.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -17,12 +19,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.mohibur.security.entity.User user = userRepository.findByUsername(username);
+        Optional<User> optionalUser = userRepository.findByUsername(username);
 
-        if (user == null) {
+        if (!optionalUser.isPresent()) {
             throw new UsernameNotFoundException(username);
         }
+        User user = optionalUser.get();
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+        return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
 }
