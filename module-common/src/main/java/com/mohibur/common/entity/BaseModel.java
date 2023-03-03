@@ -11,6 +11,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -37,4 +38,9 @@ public abstract class BaseModel implements Serializable {
 
     @LastModifiedBy
     private String modifiedBy;
+
+    @PrePersist
+    public void prePersist() {
+        this.active = true;
+    }
 }
