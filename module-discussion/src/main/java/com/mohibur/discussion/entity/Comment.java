@@ -2,7 +2,7 @@ package com.mohibur.discussion.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mohibur.common.entity.BaseModel;
-import com.mohibur.common.entity.User;
+import com.mohibur.security.entity.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
