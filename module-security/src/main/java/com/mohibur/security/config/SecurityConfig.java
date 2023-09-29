@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     JwtRequestFilter jwtRequestFilter;
     @Autowired
-    private UserServiceImpl userService;
+    UserServiceImpl userService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
