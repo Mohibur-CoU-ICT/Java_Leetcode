@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
             String text = "Please click the link below to verify your email address:\n" + verificationUrl;
 
             SimpleMailMessage email = new SimpleMailMessage();
+            email.setFrom(from);
             email.setTo(to);
             email.setSubject(subject);
             email.setText(text);
