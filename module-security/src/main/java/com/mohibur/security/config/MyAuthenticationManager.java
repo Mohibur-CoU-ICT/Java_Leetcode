@@ -39,15 +39,16 @@ public class MyAuthenticationManager implements AuthenticationManager {
         }
 
         User user = optionalUser.get();
+
         if (!user.getVerified()) {
             throw new AccountNotVerifiedException("Your account has not been verified yet.");
         }
 
-        if (checkPassword(password, user.getPassword())) {
-            return new UsernamePasswordAuthenticationToken(username, password, user.getAuthorities());
-        } else {
+        if (!checkPassword(password, user.getPassword())) {
             throw new BadCredentialsException("Invalid username or password");
         }
+
+        return new UsernamePasswordAuthenticationToken(username, password, user.getAuthorities());
     }
 
     public String generateToken(String username) {
