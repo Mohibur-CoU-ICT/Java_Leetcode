@@ -1,6 +1,8 @@
 package com.mohibur.problem_solving.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mohibur.common.entity.BaseModel;
+import com.mohibur.security.entity.User;
 import com.mohibur.problem_solving.enums.SubmissionStatus;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
