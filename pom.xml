@@ -6,7 +6,6 @@
     <modules>
 		<module>module-boot</module>
 		<module>module-common</module>
-		<module>module-discussion</module>
         <module>module-problem-solving</module>
         <module>module-security</module>
     </modules>
