@@ -1,10 +1,8 @@
-package com.mohibur.discussion.entity;
+package com.mohibur.problem_solving.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mohibur.common.entity.BaseModel;
-import com.mohibur.problem_solving.entity.Problem;
-import com.mohibur.problem_solving.entity.Tag;
-import com.mohibur.common.entity.User;
+import com.mohibur.security.entity.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -41,6 +39,10 @@ public class Discuss extends BaseModel {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "discuss")
     @ToString.Exclude
     private List<Comment> commentList;
+
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "parent_discuss_id")
+//    private List<Discuss> childDiscusses;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "discussList")
     @JsonIgnoreProperties({"discussList"})

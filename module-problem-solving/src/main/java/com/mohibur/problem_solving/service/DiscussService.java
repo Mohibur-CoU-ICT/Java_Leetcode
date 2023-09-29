@@ -1,6 +1,6 @@
-package com.mohibur.discussion.service;
+package com.mohibur.problem_solving.service;
 
-import com.mohibur.discussion.entity.Discuss;
+import com.mohibur.problem_solving.entity.Discuss;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

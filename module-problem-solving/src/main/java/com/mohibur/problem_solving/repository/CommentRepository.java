@@ -1,6 +1,6 @@
-package com.mohibur.discussion.repository;
+package com.mohibur.problem_solving.repository;
 
-import com.mohibur.discussion.entity.Comment;
+import com.mohibur.problem_solving.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

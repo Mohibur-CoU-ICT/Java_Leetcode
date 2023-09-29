@@ -1,8 +1,8 @@
-package com.mohibur.discussion.controller;
+package com.mohibur.problem_solving.controller;
 
 import com.mohibur.common.interfaces.UrlConstant;
-import com.mohibur.discussion.entity.Comment;
-import com.mohibur.discussion.serviceImpl.CommentServiceImpl;
+import com.mohibur.problem_solving.entity.Comment;
+import com.mohibur.problem_solving.serviceImpl.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,8 +1,8 @@
-package com.mohibur.discussion.serviceImpl;
+package com.mohibur.problem_solving.serviceImpl;
 
-import com.mohibur.discussion.entity.Comment;
-import com.mohibur.discussion.repository.CommentRepository;
-import com.mohibur.discussion.service.CommentService;
+import com.mohibur.problem_solving.entity.Comment;
+import com.mohibur.problem_solving.repository.CommentRepository;
+import com.mohibur.problem_solving.service.CommentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
