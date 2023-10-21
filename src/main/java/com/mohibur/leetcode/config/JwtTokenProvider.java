@@ -48,12 +48,12 @@ public class JwtTokenProvider implements TokenProvider {
     public String createToken(String username) {
         Key key = Keys.hmacShaKeyFor(secretKey.getBytes());
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + expiration);
+        Date expiryDate = new Date(now.getTime() + expiration * 1000L);
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(key, SignatureAlgorithm.HS512)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
