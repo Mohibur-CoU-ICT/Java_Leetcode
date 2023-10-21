@@ -43,11 +43,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<String> registerUser(User user) {
         try {
+            // Check if the username or email is already taken
+            Optional<User> optionalUser = userRepository.findByUsernameOrEmailAndEnabledTrue(user.getUsername(), user.getEmail());
+            if (optionalUser.isPresent()) {
+                return new ResponseEntity<>("Username or email already taken.", HttpStatus.BAD_REQUEST);
+            }
+
             // Generate a verification token
             String token = UUID.randomUUID().toString();
             user.setVerificationToken(token);
             user.setVerified(false);
             user.setActive(false);
+            user.setEnabled(false);
             String encodedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(encodedPassword);
             userRepository.save(user);
@@ -68,6 +75,7 @@ public class UserServiceImpl implements UserService {
 
             return new ResponseEntity<>("A verification link is sent to your email. Please verify your email.", HttpStatus.CREATED);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -79,6 +87,7 @@ public class UserServiceImpl implements UserService {
             user.setActive(true);
             user.setVerificationToken(null);
             user.setVerified(true);
+            user.setEnabled(true);
             userRepository.save(user);
             return new ResponseEntity<>("Email address verified", HttpStatus.OK);
         } else {
@@ -88,7 +97,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
+        Optional<User> optionalUser = userRepository.findByUsernameOrEmailAndEnabledTrue(username, username);
 
         if (!optionalUser.isPresent()) {
             throw new UsernameNotFoundException(username);

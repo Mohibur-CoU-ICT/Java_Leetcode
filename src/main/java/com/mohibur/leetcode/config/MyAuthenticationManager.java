@@ -32,7 +32,7 @@ public class MyAuthenticationManager implements AuthenticationManager {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        Optional<User> optionalUser = userRepository.findByUsername(username);
+        Optional<User> optionalUser = userRepository.findByUsernameOrEmailAndEnabledTrue(username, username);
 
         if (!optionalUser.isPresent()) {
             throw new BadCredentialsException("Invalid username or password");
