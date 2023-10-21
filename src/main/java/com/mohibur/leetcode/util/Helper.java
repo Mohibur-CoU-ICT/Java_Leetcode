@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public class Helper {
 
     // Helper method to get property names that have null values in the source object
-    private static String[] getNullPropertyNames(Object source) {
+    public static String[] getNullPropertyNames(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
         return Stream.of(src.getPropertyDescriptors())
                 .map(PropertyDescriptor::getName)
