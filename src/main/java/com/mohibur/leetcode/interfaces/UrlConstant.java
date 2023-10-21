@@ -4,13 +4,14 @@ public interface UrlConstant {
     String ID = "/{id}";
     String API = "/api";
     String VERSION1 = "/v1";
+    String PUBLIC = "/public";
 
     // common module
     class UserUrl {
         public static final String USER = "/users";
-        public static final String REGISTER = USER + "/register";
-        public static final String VERIFY = USER +  "/verify";
-        public static final String LOGIN = USER +  "/login";
+        public static final String REGISTER = PUBLIC + USER + "/register";
+        public static final String VERIFY = PUBLIC + USER +  "/verify";
+        public static final String LOGIN = PUBLIC + USER +  "/login";
         public static final String LOGOUT = API + USER +  "/logout";
         public static final String GET = API + USER;
     }

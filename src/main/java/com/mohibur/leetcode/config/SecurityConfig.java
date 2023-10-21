@@ -28,10 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         System.out.println("Inside configure(HttpSecurity http) method of SecurityConfig class");
         http
                 .csrf()
-                .ignoringAntMatchers(UrlConstant.UserUrl.REGISTER, UrlConstant.UserUrl.VERIFY, UrlConstant.UserUrl.LOGIN)
-                .and()
+                .disable()
                 .authorizeRequests()
-                .antMatchers(UrlConstant.UserUrl.REGISTER, UrlConstant.UserUrl.VERIFY, UrlConstant.UserUrl.LOGIN)
+                .antMatchers("/public/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
